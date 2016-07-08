@@ -1,0 +1,5 @@
+release/
+release.osx/
+release.linux-ia32/
+release.linux-x64/
+app/node_modules/

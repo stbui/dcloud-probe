@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dcloud 探针</title>
+    <meta charset="utf-8"/>
+    <script src="app.js"></script>
+</head>
+<body>
+<div style="text-align: center;font-size:22px; margin-top: 50px">服务已经启动</div>
+<br>
+<br>
+服务器地址：<input id="serverIp" type="text" value="172.16.97.13:8361">
+<button id="syncInfo" type="button">同步信息</button>
+
+<div id="debug"></div>
+
+<script src="src/static/jquery-1.7.2.min.js"></script>
+<script>
+    $('#syncInfo').on('click', function () {
+        var url = getServerIp();
+        var data = {name: hostname, ip: getSystemIp()[0], port: '3000', probePath: rootPath, status:1};
+
+        document.getElementById('syncInfo').innerHTML = '同步中...';
+
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: data,
+            success: function (data) {
+                if (data.resultCode == 0) {
+                    document.getElementById('syncInfo').innerHTML = '同步完成';
+                } else {
+                    document.getElementById('syncInfo').innerHTML = '已经同步';
+                    debug(data);
+                }
+            }, error: function (data) {
+                document.getElementById('syncInfo').innerHTML = '同步失败';
+                debug(data);
+            }
+        });
+    });
+
+
+    function getServerIp() {
+        var serverIp = document.getElementById('serverIp').value;
+
+        if (serverIp.indexOf(':') < 0) {
+            serverIp += ':8361'
+        }
+
+        serverIp = 'http://' + serverIp + '/api/server/add';
+
+        return serverIp;
+    }
+
+    function debug(data) {
+//        document.getElementById('debug').innerHTML = JSON.stringify(data);
+
+    }
+</script>
+</body>
+</html>

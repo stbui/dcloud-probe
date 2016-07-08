@@ -1,0 +1,27 @@
+{
+  "name": "probe",
+  "main": "app.html",
+  "version": "1.0.0",
+  "window": {
+    "icon": "app.ico",
+    "toolbar": false,
+    "show": false,
+    "show_in_taskbar": true,
+    "frame": true,
+    "position": "center",
+    "width": 350,
+    "height": 200,
+    "min_width": 350,
+    "min_height": 200,
+    "max_width": 350,
+    "max_height": 200
+  },
+  "scripts": {
+    "start": "nw .",
+    "server": "node ./src/app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
