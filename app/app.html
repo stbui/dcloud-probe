@@ -16,9 +16,9 @@
 
 <script src="src/static/jquery-1.7.2.min.js"></script>
 <script>
-    $('#syncInfo').on('click', function () {
+    function syncInfo() {
         var url = getServerIp();
-        var data = {name: hostname, ip: getSystemIp()[0], port: '3000', probePath: rootPath, status:1};
+        var data = {name: hostname, ip: getSystemIp()[0], port: '3000', probePath: rootPath, status: 1};
 
         document.getElementById('syncInfo').innerHTML = '同步中...';
 
@@ -38,7 +38,7 @@
                 debug(data);
             }
         });
-    });
+    }
 
 
     function getServerIp() {
@@ -55,8 +55,14 @@
 
     function debug(data) {
 //        document.getElementById('debug').innerHTML = JSON.stringify(data);
-
     }
+
+
+    $('#syncInfo').on('click', function () {
+        syncInfo();
+    });
+
+    syncInfo();
 </script>
 </body>
 </html>
