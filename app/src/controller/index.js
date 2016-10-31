@@ -30,5 +30,4 @@ module.exports.controller = function (app) {
         json.data = {root: rootPath, app: appPath};
         res.send(json);
     });
-
 };

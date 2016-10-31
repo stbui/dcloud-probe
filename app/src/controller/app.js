@@ -17,7 +17,7 @@ module.exports.controller = function (app) {
 
     /**
      * 在指定目录下生成文件并写入内容
-     *
+     * @return json
      */
     app.post('/app/add', function (req, res) {
 
@@ -37,7 +37,7 @@ module.exports.controller = function (app) {
 
     /**
      * 执行系统命令
-     *
+     * @return json
      */
     app.post('/app/cmd', function (req, res) {
         var cmd = req.body.cmd;
@@ -61,7 +61,6 @@ module.exports.controller = function (app) {
 
                 res.send(json);
             }
-
         });
     });
 

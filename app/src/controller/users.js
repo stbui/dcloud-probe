@@ -9,6 +9,10 @@ var json = {
 
 module.exports.controller = function (app) {
 
+    app.get('/user/all', function (req, res) {
+        return res.send(json);
+    });
+
     app.post('/user/add', function (req, res) {
         var query = req.body;
         var username = query['username'];
@@ -16,7 +20,7 @@ module.exports.controller = function (app) {
 
         if (!username || !password) {
             json.resultCode = 1001;
-            json.data = '参数错误';
+            json.resultMsg = '参数错误';
 
             return res.send(json);
         }
